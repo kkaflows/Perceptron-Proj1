@@ -124,6 +124,7 @@ public class NeuralCell {
     public void handleShowWeightButton(){
         weight1TextField.setText(String.valueOf(weights[0]));
         weight2TextField.setText(String.valueOf(weights[1]));
+//        weight2TextField.setText(String.valueOf(weights[1]));
     }
 
 
