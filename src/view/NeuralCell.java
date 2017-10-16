@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class NeuralCell {
 
-    final double learningRate = 0.1;
+    final double learningRate = 0.001;
     double[] weights;
     double error;
     Random random;
@@ -32,6 +32,8 @@ public class NeuralCell {
     public TextField weight1TextField;
     @FXML
     public TextField weight2TextField;
+    @FXML
+    public TextField sigmoidTextField;
 
 
     public NeuralCell() throws FileNotFoundException {
@@ -45,8 +47,8 @@ public class NeuralCell {
         input = new int[rowCount][columnCount - 1];
         target = new double[rowCount];
 
-        weights[0] = random.nextDouble();
-        weights[1] = random.nextDouble();
+        weights[0] = random.nextDouble()*2;
+        weights[1] = random.nextDouble()*2;
 
 
     }
@@ -75,6 +77,16 @@ public class NeuralCell {
         }
 
     }
+    public double weightSum2(double[] tmp) {
+        double weightSum = 0;
+        for (int i = 0; i < columnCount - 1; i++) {
+            weightSum += weights[i] * tmp[i];
+        }
+
+        return 1/(1 + Math.exp(-weightSum));
+
+
+    }
 
     public void learn() {
         double checkTmp = 0;
@@ -88,6 +100,7 @@ public class NeuralCell {
                 }
                 checkTmp = weightSum(tmp);
                 error = target[i]-checkTmp;
+                System.out.println("error = " + error);
                 adjustWeights(tmp);
             }
 
@@ -96,12 +109,36 @@ public class NeuralCell {
 
     }
 
+//    public void learn2() {
+//        double checkTmp = 0;
+//        loadData();
+//
+//            for (int i = 0; i < rowCount; i++) {
+//                double tmp[] = new double[columnCount - 1];
+//                for (int j = 0; j < columnCount-1; j++) {
+//
+//                    tmp[j] = input[i][j];
+//                }
+//
+//                checkTmp = weightSum2(tmp);
+//                error = target[i]-sigmoid(checkTmp);
+//
+//                adjustWeights(tmp);
+//                System.out.println("error = "+error);
+//            }
+//
+//
+//
+//
+//    }
+
     private void adjustWeights(double[] tmp) {
 
         for (int i = 0; i < columnCount-1; i++) {
             weights[i] +=  error * learningRate * tmp[i];
         }
     }
+
 
     public void handleCheckNumbersButton(){
         double weightSum = 0;
@@ -125,6 +162,27 @@ public class NeuralCell {
         weight1TextField.setText(String.valueOf(weights[0]));
         weight2TextField.setText(String.valueOf(weights[1]));
 //        weight2TextField.setText(String.valueOf(weights[1]));
+    }
+
+//    public double sigmoid(double weightSum){
+//        return  1/(1 + Math.exp(-weightSum));
+//    }
+
+    public void handleSigmoidButton(){
+        double weightSum = 0;
+        double[] tmp = new double[2];
+        tmp[0] = Double.parseDouble(X1.getText());
+        tmp[1] = Double.parseDouble(X2.getText());
+
+
+        for (int i = 0; i < columnCount - 1; i++) {
+            weightSum += weights[i] * tmp[i];
+        }
+        double sigmoidValue = 1/(1 + Math.exp(-weightSum));
+
+        sigmoidTextField.setText(Double.toString(sigmoidValue));
+
+
     }
 
 
