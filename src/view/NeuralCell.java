@@ -109,28 +109,28 @@ public class NeuralCell {
 
     }
 
-//    public void learn2() {
-//        double checkTmp = 0;
-//        loadData();
-//
-//            for (int i = 0; i < rowCount; i++) {
-//                double tmp[] = new double[columnCount - 1];
-//                for (int j = 0; j < columnCount-1; j++) {
-//
-//                    tmp[j] = input[i][j];
-//                }
-//
-//                checkTmp = weightSum2(tmp);
-//                error = target[i]-sigmoid(checkTmp);
-//
-//                adjustWeights(tmp);
-//                System.out.println("error = "+error);
-//            }
-//
-//
-//
-//
-//    }
+    public void learn2() {
+        double checkTmp = 0;
+        loadData();
+
+            for (int i = 0; i < rowCount; i++) {
+                double tmp[] = new double[columnCount - 1];
+                for (int j = 0; j < columnCount-1; j++) {
+
+                    tmp[j] = input[i][j];
+                }
+
+                checkTmp = weightSum2(tmp);
+                error = target[i]-checkTmp;
+
+                adjustWeights(tmp);
+                System.out.println("error = "+error);
+            }
+
+
+
+
+    }
 
     private void adjustWeights(double[] tmp) {
 
@@ -164,9 +164,9 @@ public class NeuralCell {
 //        weight2TextField.setText(String.valueOf(weights[1]));
     }
 
-//    public double sigmoid(double weightSum){
-//        return  1/(1 + Math.exp(-weightSum));
-//    }
+    public double sigmoid(double weightSum){
+        return  1/(1 + Math.exp(-weightSum));
+    }
 
     public void handleSigmoidButton(){
         double weightSum = 0;

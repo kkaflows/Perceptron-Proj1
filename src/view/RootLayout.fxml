@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NeuralCell">
    <children>
-      <Button layoutX="42.0" layoutY="163.0" mnemonicParsing="false" onAction="#learn" text="Learn from data.txt" />
+      <Button layoutX="42.0" layoutY="163.0" mnemonicParsing="false" onAction="#learn2" text="Learn from data.txt" />
       <TextField fx:id="X1" layoutX="436.0" layoutY="56.0" />
       <TextField fx:id="X2" layoutX="436.0" layoutY="130.0" />
       <Label layoutX="497.0" layoutY="23.0" text="X1:" />
