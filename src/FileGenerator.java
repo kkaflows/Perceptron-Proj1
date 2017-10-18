@@ -8,10 +8,10 @@ public class FileGenerator {
         Random random = new Random();
         int tmp1, tmp2;
         int target;
-        PrintWriter zapis = new PrintWriter("data2.txt");
-        zapis.println("10000");                                     //ile danych
+        PrintWriter zapis = new PrintWriter("test2.txt");
+        zapis.println("2000");                                     //ile danych
         zapis.println("3");                                         //ile kolumn
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 2000; i++) {
             tmp1 = random.nextInt()%40;
             tmp2 = random.nextInt()%40;
             if(tmp1 + tmp2 >10)
@@ -19,7 +19,8 @@ public class FileGenerator {
             else
                 target = 0;
 
-            zapis.println(tmp1+" "+tmp2+" "+target);
+            zapis.println(tmp1+"  "+tmp2+"  "+target);
+
         }
     }
 }

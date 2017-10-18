@@ -22,7 +22,10 @@
       <Button layoutX="268.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleShowWeightButton" text="Show Weights" />
       <Label layoutX="454.0" layoutY="201.0" text="1 -&gt; sum is over 10" />
       <Label layoutX="450.0" layoutY="233.0" text="0 -&gt; sum is under 10" />
-      <TextField fx:id="sigmoidTextField" layoutX="436.0" layoutY="355.0" />
-      <Button layoutX="476.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleSigmoidButton" text="Sigmoid" />
+      <TextField fx:id="sigmoidTextField" layoutX="431.0" layoutY="343.0" />
+      <Label layoutX="484.0" layoutY="322.0" text="sigmoid:" />
+      <Button layoutX="48.0" layoutY="286.0" mnemonicParsing="false" onAction="#test" text="Test from test.txt" />
+      <Label layoutX="42.0" layoutY="322.0" text="\% of success guessess:" />
+      <TextField fx:id="testResult" layoutX="42.0" layoutY="343.0" />
    </children>
 </AnchorPane>
