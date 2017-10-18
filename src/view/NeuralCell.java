@@ -45,7 +45,7 @@ public class NeuralCell {
 
         scanner = new Scanner(new File("data.txt"));
 
-        rowCount = scanner.nextInt();
+        rowCount = scanner.nextInt() ;
         columnCount = scanner.nextInt();
         random = new Random();
         weights = new double[columnCount - 1];
@@ -68,6 +68,7 @@ public class NeuralCell {
             row++;
         }
 
+
     }
 
     public double weightSum2(double[] tmp) {
@@ -76,14 +77,14 @@ public class NeuralCell {
             weightSum += weights[i] * tmp[i];
         }
 
-        System.out.println("weightsum = " + weightSum);
+//        System.out.println("weightsum = " + weightSum);
 
         return sigmoid(weightSum);
 
 
     }
 
-    public void learn2() {
+    public void learn2() throws FileNotFoundException {
         double checkTmp = 0;
         loadData();
 
@@ -93,7 +94,8 @@ public class NeuralCell {
 
                 tmp[j] = input[i][j];
             }
-
+            System.out.println(tmp[0]);
+            System.out.println(tmp[1]);
             checkTmp = weightSum2(tmp);
             error = target[i] - checkTmp;
 
@@ -135,6 +137,10 @@ public class NeuralCell {
         double sigmoidValue = sigmoid(weightSum);
 
         sigmoidTextField.setText(Double.toString(sigmoidValue));
+        if(sigmoidValue>0.5)
+            result.setText("1");
+        else
+            result.setText("0");
 
     }
 
@@ -167,6 +173,7 @@ public class NeuralCell {
         }
         double average = (success/rowCountTest)*100;
         testResult.setText(String.valueOf(average));
+
 
 
     }
